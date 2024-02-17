@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+  namespace: mynamespace
+  labels:
+    name: yash
+spec:
+  containers:
+    name: nginx
+    image: nginx
+    Ports:
+     containerport: 80
+
+---
+
+apiVersion: v1
+kind: service
+metadata:
+  name: visiblity
+  namespace: mynamespace
+spec: 
+  type: NodePort
+  selectors:
+    name: yash
+  port: 80
+  targetport: 8080
+  NodePort: 32002
+  
